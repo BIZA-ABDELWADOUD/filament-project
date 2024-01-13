@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('fullname');
+            $table->date('hiring_date');
+            $table->date('birth_date');
+            $table->foreignId('country_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('state_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->foreignId('department_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }
